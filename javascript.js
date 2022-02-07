@@ -81,50 +81,59 @@ form.addEventListener("submit", function (e) {
     // If correct dates were given
     if (datesValid.value) {
         console.log(calcRentalDays(pickupdate.value, handindate.value))
-        
-        // We go through each car, and check if they need to be shown
-        for (const car of carlist) {
-            showCar = checkCar(car, persons.value, suitcases.value) // Checking the car
-            let template = ""
-            if(showCar) {
-                console.log(calcRentalCost(calcRentalDays(pickupdate.value, handindate.value),100,car.supplement))
-                let calculatedPrice = calcRentalCost(calcRentalDays(pickupdate.value, handindate.value),100,car.supplement)
-                // If we need to add the car in the HTML
-                template = `
-                <div class="flex-full-centered">
-                <div class="cars car-3">
-                    <div class="car-info flex-full-centered">
-                        <img src="${car.image}" alt=""> 
-                        <h4>${car.carname}</h4>
-                    </div>
-                    <div class="car-details flex-full-centered">
-                        <div class="flex flex-column">
-                            <span>Category: ${car.category}</span>
-                            <span>Persons: ${car.people}</span>
-                            <span>Suitcases: ${car.suitcases}</span>
+
+        // Grabbing the data from github repo
+        fetch("https://kislajos.github.io/api/cars.json")
+        .then(function (data) { //Waiting for the server to respond (promise)
+            return data.json();
+        })
+        .then(function (post) {
+            const carlist = post;
+
+            // We go through each car, and check if they need to be shown
+            for (const car of carlist) {
+                showCar = checkCar(car, persons.value, suitcases.value) // Checking the car
+                let template = ""
+                if(showCar) {
+                    console.log(calcRentalCost(calcRentalDays(pickupdate.value, handindate.value),100,car.supplement))
+                    let calculatedPrice = calcRentalCost(calcRentalDays(pickupdate.value, handindate.value),100,car.supplement)
+                    // If we need to add the car in the HTML
+                    template = `
+                    <div class="flex-full-centered">
+                    <div class="cars car-3">
+                        <div class="car-info flex-full-centered">
+                            <img src="${car.image}" alt=""> 
+                            <h4>${car.carname}</h4>
+                        </div>
+                        <div class="car-details flex-full-centered">
+                            <div class="flex flex-column">
+                                <span>Category: ${car.category}</span>
+                                <span>Persons: ${car.people}</span>
+                                <span>Suitcases: ${car.suitcases}</span>
+                            </div>
+                        </div>
+                        <div class="car-price-box flex-full-centered flex-column small-gap">
+                            <span class="car-price">${calculatedPrice}</span>
+                            <button class="book-button">Book Now</button>
+                        </div>
                         </div>
                     </div>
-                    <div class="car-price-box flex-full-centered flex-column small-gap">
-                        <span class="car-price">${calculatedPrice}</span>
-                        <button class="book-button">Book Now</button>
-                    </div>
-                    </div>
-                </div>
-                `
+                    `
+                }
+                // No else branch is needed, because the template remains empty if we found no cars
+
+                products.insertAdjacentHTML("beforeend", template)
             }
-            // No else branch is needed, because the template remains empty if we found no cars
 
-            products.insertAdjacentHTML("beforeend", template)
-        }
+            // If the output is somehow empty, we change it to show there were no results
+            if (products.innerHTML.length == 0) {
+                let noresults = `
+                <span class="no-results"> No results found :( </span>
+                `
 
-        // If the output is empty, we change it to show there were no results
-        if (products.innerHTML.length == 0) {
-            let noresults = `
-            <span class="no-results"> No results found :( </span>
-            `
-
-            products.insertAdjacentHTML("beforeend", noresults)
-        }
+                products.insertAdjacentHTML("beforeend", noresults)
+            }
+        })
     }
     else {
         error.innerHTML = datesValid.message // The dates were incorrect, we show the corresponding error message
