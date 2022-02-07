@@ -1,0 +1,264 @@
+/* Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+/* Variables */
+
+:root {
+    --clr-darkblue: #155cad;
+    --clr-lightblue: #1d78df;
+    --clr-lightgrey: #c2cbd4;
+    --clr-darkgrey: #67696b;
+}
+
+/* CSS reset */
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0 0;
+    padding: 0 0;
+}
+
+/* General styling */ 
+
+html {
+    font-size: 10px; /* So 1 rem = 10 px, easier to use */
+}
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: var(--clr-lightgrey);
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2rem 1fr 1fr;
+    grid-auto-rows: 1fr;
+    gap: 10px 10px;
+    grid-auto-flow: row;
+    align-items: stretch;
+    grid-template-areas:
+      "header"
+      "hero"
+      "products";   
+   /*  width: 50%;
+    height: 50%; */
+}
+
+.login-box {
+    font-size: 1.5rem;
+}
+
+.padded-1 {
+    padding: 0.5rem;
+}
+  
+.header {
+    display: grid; 
+    grid-auto-rows: 1fr; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr; 
+    gap: 10px 10px; 
+    grid-template-areas: 
+        ". ."; 
+    align-items: stretch; 
+    grid-area: header; 
+}
+  
+.hero {
+     grid-area: hero; 
+}
+  
+.products { 
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 1rem;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "car-1"
+      "car-2"
+      "car-3";
+    grid-area: products;
+}
+
+.cars {
+    border: 0.2rem solid var(--clr-lightgrey);
+    border-radius: 0.5rem;
+    width: 95%;
+    padding: 2rem;
+}
+  
+.car-1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "car-info car-details car-price";
+    grid-area: car-1;
+}
+  
+.car-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "car-info car-details car-price";
+    grid-area: car-2; 
+}
+  
+.car-3 { 
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "car-info car-details car-price";
+    grid-area: car-3;
+}
+  
+.car-info { 
+    grid-area: car-info; 
+}
+
+.car-details { 
+    grid-area: car-details; 
+}
+
+.car-price-box { 
+    grid-area: car-price; 
+}
+
+.car-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.car-price::before {
+    content: 'DKK';
+}
+
+.flex-full-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.small-gap {
+    gap: 0.5rem;
+}
+
+.hero-image {
+    background-image: url("../img/hero-img.jpg");
+  
+    /* Set a specific height */
+    height: 30rem;
+  
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.car-selector-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    align-items: stretch;
+    grid-template-areas:
+      "box-title box-title"
+      "pick-up hand-in"
+      "persons suitcases"
+      "search search";   
+    background-color: var(--clr-lightgrey);
+    /* height: 10rem;
+    width: 40rem; */
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
+.box-title {
+    grid-area: box-title;
+}
+
+select,
+input {
+    width: 13rem;
+}
+
+select {
+    border-radius: 0;
+    background-color: #fff;
+}
+
+.pick-up {
+    grid-area: pick-up;
+}
+
+.hand-in {
+    grid-area: hand-in;
+}
+
+.persons {
+    grid-area: persons;
+}
+
+.suitcases {
+    grid-area: suitcases;
+}
+
+.search {
+    grid-area: search;
+}
+
+.hero-image {
+    width: auto;
+}
+
+.book-button {
+    width: 40%;
+    padding: 0.5rem;
+}
+
+.search-button {
+    width: 40%;
+    padding: 0.5rem;
+}
+
+.error-text {
+    color: #df3131;
+    font-weight: bold;
+    font-size: x-small;
+}
+
+.no-results {
+    font-weight: bold;
+    font-size: large;
+}

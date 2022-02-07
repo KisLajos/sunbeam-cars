@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent a car | SunbeamCars Inc.</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="main-grid">
+        <div class="header">
+            <div class="flex-full-centered">
+                <h1>SunbeamCars Inc.</h1>
+            </div>
+            <div class="login-box flex-full-centered">
+                <i id="login" class="fa fa-user padded-1"></i>
+                <label for="login">Log In</label>
+            </div>
+        </div>
+        <div class="hero">
+            <div class="hero-image">
+                <form id="form">
+                    <div class="car-selector-grid">
+                        <div class="box-title flex-full-centered">
+                            <h2>Find the car that suits you</h2>
+                        </div>
+                        <div class="pick-up flex-full-centered flex-column">
+                            <label for="pick-up-date">I pick it up</label>
+                            <input id="pick-up-date" type="date">
+                        </div>
+                        <div class="hand-in flex-full-centered flex-column">
+                            <label for="hand-in-date">I hand it in</label>
+                            <input id="hand-in-date" type="date">
+                        </div>
+                        <div class="persons flex-full-centered flex-column">
+                            <label for="persons">Number of persons</label>
+                            <input id="persons" type="number" value="1" min="1" max="7" step="1">
+                        </div>
+                        <div class="suitcases flex-full-centered flex-column">
+                            <label for="suitcases">Number of suitcases</label>
+                            <select name="suitcases" id="suitcases">
+                                <option value="0">0 - only a bag</option>
+                                <option value="1">1 suitcases</option>
+                                <option value="2">2 suitcases</option>
+                                <option value="3">3 suitcases</option>
+                                <option value="4">4 suitcases</option>
+                            </select>
+                        </div>
+                        <div class="search flex-full-centered">
+                            <button type="submit" class="search-button">Search</button>
+                            <div id="error" class="error-text"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="products" id="products">
+          <!-- <div class="flex-full-centered">
+            <div class="cars car-1">
+                <div class="car-info flex-full-centered">
+                    <img src="" alt=""> 
+                    <h4>Car Name</h4>
+                </div>
+                <div class="car-details flex-full-centered">
+                    <div class="flex flex-column">
+                        <span>Category: Budget</span>
+                        <span>Persons: 4</span>
+                        <span>Suitcases: 0</span>
+                    </div>
+                </div>
+                <div class="car-price-box flex-full-centered flex-column small-gap">
+                    <span class="car-price">2200,00</span>
+                    <button class="book-button">Book Now</button>
+                </div>
+              </div>
+          </div>
+          <div class="flex-full-centered">
+            <div class="cars car-2">
+                <div class="car-info flex-full-centered">
+                    <img src="" alt=""> 
+                    <h4>Car Name</h4>
+                </div>
+                <div class="car-details flex-full-centered">
+                    <div class="flex flex-column">
+                        <span>Category: Standard</span>
+                        <span>Persons: 5</span>
+                        <span>Suitcases: 3</span>
+                    </div>
+                </div>
+                <div class="car-price-box flex-full-centered flex-column small-gap">
+                    <span class="car-price">2200,00</span>
+                    <button class="book-button">Book Now</button>
+                </div>
+              </div>
+          </div>
+          <div class="flex-full-centered">
+            <div class="cars car-3">
+                <div class="car-info flex-full-centered">
+                    <img src="" alt=""> 
+                    <h4>Car Name</h4>
+                </div>
+                <div class="car-details flex-full-centered">
+                    <div class="flex flex-column">
+                        <span>Category: Minivan</span>
+                        <span>Persons: 7</span>
+                        <span>Suitcases: 4</span>
+                    </div>
+                </div>
+                <div class="car-price-box flex-full-centered flex-column small-gap">
+                    <span class="car-price">2200,00</span>
+                    <button class="book-button">Book Now</button>
+                </div>
+              </div>
+          </div> -->
+        </div>
+    </div>
+    <script src="javascript.js"></script>
+    <script src="data.js"></script>
+</body>
+</html>
