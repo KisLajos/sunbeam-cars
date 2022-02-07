@@ -156,6 +156,12 @@ a {
     align-items: center;
 }
 
+.flex-center-space-evenly {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
 .flex {
     display: flex;
 }
@@ -261,4 +267,8 @@ select {
 .no-results {
     font-weight: bold;
     font-size: large;
+}
+
+.car-info > img {
+    padding: 0.5rem;
 }

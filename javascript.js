@@ -104,9 +104,9 @@ form.addEventListener("submit", function (e) {
                     template = `
                     <div class="flex-full-centered">
                     <div class="cars car-3">
-                        <div class="car-info flex-full-centered">
-                            <img src="${car.image}" alt=""> 
-                            <h4>${car.carname}</h4>
+                        <div class="car-info flex-center-space-evenly">
+                            <img src="${car.image}" alt="${car.carname}"> 
+                            <h3>${car.carname}</h3>
                         </div>
                         <div class="car-details flex-full-centered">
                             <div class="flex flex-column">
