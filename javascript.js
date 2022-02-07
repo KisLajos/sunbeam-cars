@@ -2,7 +2,7 @@ function validDates(pickupdate, handindate) {
     const pickup = new Date(pickupdate);
     const handin = new Date(handindate);
 
-    // Create a return object
+    // Creating a return object
     const res = {
         value: "",
         message: ""
@@ -33,14 +33,18 @@ function validDates(pickupdate, handindate) {
 function calcRentalDays(pickupdate, handindate) {
     const pickup = new Date(pickupdate);
     const handin = new Date(handindate);
-    const timediff = handin.getTime() - pickup.getTime();
-    const diffindays = timediff / (1000 * 3600 * 24) + 1;
-    return diffindays;
+    const timediff = handin.getTime() - pickup.getTime(); // The difference in time is in milliseconds
+    const diffindays = timediff / (1000 * 3600 * 24) + 1; // so here we compensate for that with the 1000
+    
+    return diffindays; // We return the number of days (including the pick-up and hand-in day)
 }
 
 function calcRentalCost(days, priceperday, supplement) {
+    // The total should be the base price + the price per day + the supplement per day
+    // and then adding the 25% VAT to that subtotal
     const base = 495
     let totalprice = ((base + days*(priceperday+supplement)) * 1.25).toFixed(2)
+
     return totalprice;
 }
 
@@ -54,12 +58,13 @@ function checkCar(car, persons, suitcases) {
     }
 }
 
+const form = document.getElementById("form");
+
 // Event handler that is triggered when user clicks on submit button
 form.addEventListener("submit", function (e) {
     e.preventDefault(); // Do not reload after submit button is pressed
 
     // Bind javascript to the html elements with their id
-    const form = document.getElementById("form");
     const pickupdate = document.getElementById("pick-up-date");
     const handindate = document.getElementById("hand-in-date");
     const persons = document.getElementById("persons");
@@ -80,24 +85,22 @@ form.addEventListener("submit", function (e) {
 
     // If correct dates were given
     if (datesValid.value) {
-        console.log(calcRentalDays(pickupdate.value, handindate.value))
-
-        // Grabbing the data from github repo
+        // We grab the data from the github repo
         fetch("https://kislajos.github.io/api/cars.json")
-        .then(function (data) { //Waiting for the server to respond (promise)
+        .then(function (data) { // Waiting for the server to respond (promise)
             return data.json();
         })
         .then(function (post) {
-            const carlist = post;
+            const carlist = post; // Assigning post as our datalist
 
             // We go through each car, and check if they need to be shown
             for (const car of carlist) {
-                showCar = checkCar(car, persons.value, suitcases.value) // Checking the car
+                showCar = checkCar(car, persons.value, suitcases.value) // Checking if the car matches the criterias
                 let template = ""
-                if(showCar) {
-                    console.log(calcRentalCost(calcRentalDays(pickupdate.value, handindate.value),100,car.supplement))
-                    let calculatedPrice = calcRentalCost(calcRentalDays(pickupdate.value, handindate.value),100,car.supplement)
-                    // If we need to add the car in the HTML
+                if (showCar) {
+                    // We need to add the car in the HTML
+                    let calculatedPrice = calcRentalCost(calcRentalDays(pickupdate.value, handindate.value), 100, car.supplement)
+                    
                     template = `
                     <div class="flex-full-centered">
                     <div class="cars car-3">
@@ -125,11 +128,9 @@ form.addEventListener("submit", function (e) {
                 products.insertAdjacentHTML("beforeend", template)
             }
 
-            // If the output is somehow empty, we change it to show there were no results
+            // If the output is somehow empty, we change it to show that there were no results
             if (products.innerHTML.length == 0) {
-                let noresults = `
-                <span class="no-results"> No results found :( </span>
-                `
+                let noresults = `<span class="no-results"> No results found :( </span>`
 
                 products.insertAdjacentHTML("beforeend", noresults)
             }
