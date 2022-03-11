@@ -99,7 +99,8 @@ form.addEventListener("submit", function (e) {
                 let template = ""
                 if (showCar) {
                     // We need to add the car in the HTML
-                    let calculatedPrice = calcRentalCost(calcRentalDays(pickupdate.value, handindate.value), 100, car.supplement)
+                    let rentaldays = calcRentalDays(pickupdate.value, handindate.value)
+                    let calculatedPrice = calcRentalCost(rentaldays, 100, car.supplement)
                     
                     template = `
                     <div class="flex-full-centered">
@@ -117,7 +118,7 @@ form.addEventListener("submit", function (e) {
                         </div>
                         <div class="car-price-box flex-full-centered flex-column small-gap">
                             <span class="car-price">${calculatedPrice}</span>
-                            <button class="book-button">Book Now</button>
+                            <a class="book-button" href="accessories.html?carname=${car.carname}&pickupdate=${pickupdate.value}&handindate=${handindate.value}&rentaldays=${rentaldays}&rentalcost=${calculatedPrice}">Book Now</a>
                         </div>
                         </div>
                     </div>
