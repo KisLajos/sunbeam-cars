@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car accessories | SunbeamCars Inc.</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="accessories-grid">
+        <div id="output" class="accessories-output"></div>
+    
+        <form id="form" class="accessories-form">
+            <div>
+                <input type="checkbox" data-item="Second driver" class="slist" value="199" onchange="calculateTotal(this, this.value)">Second driver dkr. 199,00<br>
+                <input type="checkbox" data-item="Child seat1" class="slist" value="155" onchange="calculateTotal(this, this.value)">Child seat (5-12 year) dkr. 155,00<br>
+                <input type="checkbox" data-item="Roadside Aid" class="slist" value="120" onchange="calculateTotal(this, this.value)">Roadside Aid dkr. 120,00<br>
+                <input type="checkbox" data-item="Baby seat" class="slist" value="100" onchange="calculateTotal(this, this.value)">Baby seat (0-1 year), dkr. 100,00<br>
+                <input type="checkbox" data-item="Child seat2" class="slist" value="140" onchange="calculateTotal(this, this.value)">Child seat (1-4 year), dkr. 140,00<br>
+                <input type="checkbox" data-item="GPS navigation" class="slist" value="250" onchange="calculateTotal(this, this.value)">GPS navigation dkr. 250,00<br>
+                <input type="checkbox" data-item="Snow chains" class="slist" value="188" onchange="calculateTotal(this, this.value)">Snow chains dkr. 188,00<br>
+            </div>
+
+            <button class="acc-submit-button" type="submit">Continue</button>
+        </form>
+
+        <div id="totaloutput" class="accessories-total"></div>
+    </div>
+
+    <script src="accessories.js"></script>
+</body>
+</html>
