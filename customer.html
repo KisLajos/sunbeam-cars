@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Form</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="customer-flex">
+        <form id="customerform">
+            <label for="firstname">First name</label>
+            <input type="text" name="" id="firstname" required>
+            <label for="lastname">Last name</label>
+            <input type="text" name="" id="lastname" required>
+            <label for="streetname">Street name</label>
+            <input type="text" name="" id="streetname" required>
+            <label for="numberfloor">Number / Floor</label>
+            <input type="number" name="" id="numberfloor" required>
+            
+            <label for="postalcode">Postal code & City</label>
+            <input type="text" name="" id="postalcode" list="codelist" required>
+            <datalist id="codelist"></datalist>
+    
+            <input type="checkbox" name="" id="over18" required>
+            <label for="over18">I am 18 years old</label>
+    
+            <button class="book-button" type="submit">Book now!</button>
+        </form>
+    
+        <div id="output"></div>
+    </div>
+
+    <script src="customer.js"></script>
+</body>
+</html>
