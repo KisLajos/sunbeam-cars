@@ -9,10 +9,10 @@ const text1_options = [
 ]
 
 const text2_options = [
-    "69 min. read",
-    "7 min. read",
-    "8 min. read",
-    "87,658.1277 min. read"
+    "Way of Life.",
+    "The Future is Everyone.",
+    "Everyone dreams of an Audi.",
+    "Das Auto."
 ]
 
 const color_options = [
