@@ -32,7 +32,7 @@ const image_options = [
 let clickdetected = false
 let refreshIntervalId = setInterval(() =>  {
     optionNext.click()
-}, 2500)
+}, 6500)
 
 var i = 0
 const currentOptionText1 = document.getElementById("current-option-text1")
@@ -105,3 +105,64 @@ optionPrevious.onclick = function (e) {
         carousel.classList.remove("anim-previous")
     }, 650)
 }
+
+/* Typewriter by Coding in Public
+Source: https://codepen.io/Coding-in-Public/pen/yLPYjrv */
+
+class Typewriter {
+    constructor(element, options){
+        this.element = element
+        this.words = [... this.element.dataset.typewriter.split(',')]
+        this.speed = options?.speed || 150
+        this.delay = options?.delay || 1500
+        this.repeat = options?.repeat
+        this.initTyping()
+    }
+
+    wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+
+    toggleTyping = () => this.element.classList.toggle('typing')
+    
+    async typewrite(word) {
+        await this.wait(this.delay) //wait a bit
+        this.toggleTyping() //remove blinking cursor
+        for (const letter of word.split('')) {
+            //add each letter based on the passed speed
+            this.element.textContent += letter
+            await this.wait(this.speed)
+        }
+        this.toggleTyping() //add back cursor
+        await this.wait(this.delay) //wait a bit
+        this.toggleTyping() //remove blinking cursor
+        while (this.element.textContent.length !== 0) {
+            //as long as there are letters in the word
+            //remove them one by one
+            this.element.textContent = this.element.textContent.slice(0, -1)
+            await this.wait(this.speed)
+        }
+        this.toggleTyping() //add back cursor
+    }
+    
+    async initTyping() {
+        for (const word of this.words) {
+            await this.typewrite(word)
+        }
+
+        if(this.repeat){
+            await this.initTyping()
+        }
+        else {
+            this.element.style.animation = 'none'
+        }
+    }
+}
+
+new Typewriter(
+    document.querySelector('[data-typewriter]'),
+
+    {   
+        speed: 50,
+        delay: 1000,
+        repeat: true
+    }
+)
