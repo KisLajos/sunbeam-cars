@@ -50,7 +50,9 @@ let formtemplate = `
 <p>Address: <span class="bold-text">${streetname} ${numberfloor}</span></p>
 <p>Postal code and city: <span class="bold-text">${postalcode}</span></p>
 
-<button class="no-print book-button" onclick="window.print()">Print</button>
+<div class="flex-full-centered">
+    <button class="no-print book-button margin-1" onclick="window.print()">Print receipt</button>
+</div>
 `
 
 const formoutput = document.getElementById("formoutput");
