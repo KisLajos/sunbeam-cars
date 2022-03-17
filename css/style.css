@@ -21,6 +21,11 @@
     padding: 0 0;
 }
 
+/* Fill the whole page */
+html, body {
+  min-height: 100%;
+}
+
 /* General styling */ 
 
 html {
@@ -29,6 +34,7 @@ html {
 
 body {
     font-family: 'Noto Sans', sans-serif;
+    background: linear-gradient(#eee, #cde)
 }
 
 a {
@@ -63,6 +69,10 @@ a {
 
 .padded-1 {
     padding: 1rem;
+}
+
+.margin-1 {
+    margin: 1rem;
 }
   
 .header {
@@ -292,7 +302,12 @@ select {
 }
 
 .accessories-output {
-  border: 1px solid #000;
+  background: var(--clr-lightgrey);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 1.4rem;
 }
 
 .customer-flex,
@@ -307,6 +322,7 @@ select {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background: #cdd;
 }
 
 .accessories-form input {
@@ -320,8 +336,10 @@ select {
 
 .accessories-total {
     display: flex;
-    align-items: end;
+    align-items: center;
     justify-content: center;
+    background: var(--clr-lightgrey);
+    font-size: 2rem;
 }
 
 .acc-submit-button {
@@ -329,9 +347,51 @@ select {
 }
 
 @media print {
-        .no-print {
-        display: none;
-    }
+  .no-print {
+      display: none;
+  }
+
+  .receipt-flex {
+    flex-direction: column;
+  }
+
+  .receipt-flex #formoutput {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Typewriter by Coding in Public
+Source: https://codepen.io/Coding-in-Public/pen/yLPYjrv */
+
+.typewriter-container {
+  display: grid;
+  justify-items: start;
+  gap: 2rem;
+}
+
+[data-typewriter] {
+  font-family: system-UI;
+  font-weight: bold;
+  font-size: 4.5rem;
+  color: #d9376e;
+  height: 6rem;
+  border-right: 0.8rem solid transparent;
+  padding: 0.6rem;
+}
+
+[data-typewriter]:not(.typing) {
+  animation: blink-cursor 1.1s step-end infinite;
+}
+
+@keyframes blink-cursor {
+  0%,
+  100% {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: #ff8e3c;
+  }
 }
 
 /* Carousel by Radu 
@@ -351,6 +411,14 @@ Source: https://codepen.io/maxym11/pen/dyGEzay */
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.about-us-header {
+  font-size: 4rem;
+}
+
+.about-us-body p {
+  font-size: 1.4rem;
 }
 
 #carousel-wrapper {
@@ -687,6 +755,11 @@ Source: https://codepen.io/maxym11/pen/dyGEzay */
 }
 
 @media screen and (max-width: 550px) {
+  .customer-flex,
+  .receipt-flex {
+      flex-direction: column;
+  }
+  
   #carousel-wrapper {
     margin-right: 0;
   }

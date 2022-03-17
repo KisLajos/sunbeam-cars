@@ -7,12 +7,14 @@ const rentaldays = urldata.get("rentaldays")
 const rentalcost = parseFloat(urldata.get("rentalcost"))
 
 const template = `
-    <p>Well chosen!</p>
-    <p class="bold-text">${carname}</p>
-    <p>Pick-up date: ${pickupdate}</p>
-    <p>Return date: ${handindate}</p>
-    <p>Rental days: ${rentaldays}</p>
-    <p class="bold-text">Rental cost: ${rentalcost} kr. incl. VAT</p>
+    <div>
+        <p>Well chosen!</p>
+        <p class="bold-text">${carname}</p>
+        <p>Pick-up date: ${pickupdate}</p>
+        <p>Return date: ${handindate}</p>
+        <p>Rental days: ${rentaldays}</p>
+        <p class="bold-text">Rental cost: ${rentalcost} kr. incl. VAT</p>
+    </div>
 `
 
 const output = document.getElementById("output");
