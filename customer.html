@@ -6,8 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fill out your Data | SunbeamCars Inc.</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    <div class="header">
+        <div class="flex-full-centered">
+            <h1><a href="about-us.html">SunbeamCars Inc</a>.</h1>
+        </div>
+        <div class="login-box flex-full-centered">
+            <i id="login" class="fa fa-user padded-1"></i>
+            <span>Log In</span>
+        </div>
+    </div>
     <div class="hero">
         <div class="hero-image">
             
@@ -16,19 +26,19 @@
     <div class="customer-flex">
         <form id="customerform">
             <label for="firstname">First name</label>
-            <input type="text" name="" id="firstname" required>
+            <input type="text" id="firstname" required>
             <label for="lastname">Last name</label>
-            <input type="text" name="" id="lastname" required>
+            <input type="text" id="lastname" required>
             <label for="streetname">Street name</label>
-            <input type="text" name="" id="streetname" required>
+            <input type="text" id="streetname" required>
             <label for="numberfloor">Number / Floor</label>
-            <input type="number" name="" id="numberfloor" required>
+            <input type="number" id="numberfloor" required>
             
             <label for="postalcode">Postal code & City</label>
-            <input type="text" name="" id="postalcode" list="codelist" required>
+            <input type="text" id="postalcode" list="codelist" required>
             <datalist id="codelist"></datalist>
     
-            <input type="checkbox" name="" id="over18" required>
+            <input type="checkbox" id="over18" required>
             <label for="over18">I am 18 years old</label>
     
             <button class="book-button" type="submit">Book now!</button>
